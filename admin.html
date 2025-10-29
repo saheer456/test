@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Panel | Carevia Foundation</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Small admin specific overrides to keep the file self-contained */
+    body { background:#f3f6f8; font-family: Arial, sans-serif; color:#222; margin:0; }
+    header { background:#2c5530; color:#fff; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin:0; font-size:1.15rem; }
+    #logoutBtn { background:#e74c3c; color:#fff; border:0; padding:8px 12px; border-radius:6px; cursor:pointer; }
+    main { max-width:1100px; margin:20px auto; padding:18px; background:#fff; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+    nav.tabs { display:flex; gap:6px; margin-bottom:18px; }
+    nav.tabs button { flex:1; padding:10px; background:transparent; border:1px solid #e7ecee; border-bottom:3px solid transparent; cursor:pointer; border-radius:8px; font-weight:600; }
+    nav.tabs button.active { border-color:#dfeff0; border-bottom-color:#2c5530; color:#2c5530; background:#f7fbfb; }
+    section { display:none; padding-top:8px; }
+    section.active { display:block; }
+    form .row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+    .form-control { flex:1; min-width:200px; padding:8px; border:1px solid #ddd; border-radius:6px; }
+    .btn { background:#2c5530; color:#fff; border:0; padding:8px 12px; border-radius:6px; cursor:pointer; }
+    .btn.danger { background:#e74c3c; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-top:12px; }
+    .card { background:#fff; border:1px solid #eef3f3; padding:8px; border-radius:8px; box-shadow:0 3px 8px rgba(12,30,25,0.03); }
+    .card img { width:100%; height:140px; object-fit:cover; border-radius:6px; }
+    .card h4 { margin:8px 0 4px; font-size:1rem; }
+    .card p.meta { color:#666; font-size:0.85rem; margin:0 0 8px; }
+    .card .actions { display:flex; gap:8px; justify-content:center; }
+    .small { font-size:0.9rem; color:#666; }
+    /* modal */
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; z-index:9999; }
+    .modal { background:#fff; width:95%; max-width:720px; padding:16px; border-radius:10px; }
+    .modal header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+    .modal h3{ margin:0; }
+    .close-x{ background:none; border:0; font-size:20px; cursor:pointer; }
+    .helper{ font-size:0.85rem; color:#666; margin-top:6px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Carevia Foundation — Admin Panel</h1>
+    <div>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <nav class="tabs">
+      <button id="tabGallery" class="active">📷 Gallery Management</button>
+      <button id="tabStories">📖 Stories Management</button>
+    </nav>
+
+    <!-- GALLERY SECTION -->
+    <section id="sectionGallery" class="active">
+      <h2>Upload Image</h2>
+      <form id="galleryForm">
+        <div class="row">
+          <input id="galleryTitle" class="form-control" type="text" placeholder="Image title (required)" required />
+          <select id="galleryCategory" class="form-control">
+            <option value="events">Events</option>
+            <option value="success-stories">Success Stories</option>
+            <option value="team">Team</option>
+            <option value="community">Community</option>
+          </select>
+        </div>
+        <div class="row">
+          <input id="galleryImage" class="form-control" type="file" accept="image/*" required />
+          <input id="galleryDescription" class="form-control" type="text" placeholder="Short description (optional)" />
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="submit" class="btn">Add Image</button>
+          <button type="button" id="bulkDeleteImages" class="btn danger">Delete All Images</button>
+          <span class="helper">Images are stored in browser (localStorage) as data URLs. For permanent hosting use a backend.</span>
+        </div>
+      </form>
+
+      <h3 style="margin-top:18px;">Existing Images (<span id="imageCount">0</span>)</h3>
+      <div id="galleryList" class="grid" aria-live="polite"></div>
+    </section>
+
+    <!-- STORIES SECTION -->
+    <section id="sectionStories">
+      <h2>Add / Edit Story</h2>
+      <form id="storyForm">
+        <div class="row">
+          <input id="storyTitle" class="form-control" type="text" placeholder="Story title (required)" required />
+          <input id="storyAuthor" class="form-control" type="text" placeholder="Author (required)" required />
+        </div>
+        <div class="row">
+          <textarea id="storyContent" class="form-control" rows="5" placeholder="Write the story content (required)" required></textarea>
+        </div>
+        <div class="row">
+          <input id="storyImage" class="form-control" type="file" accept="image/*" />
+          <input id="storyDate" class="form-control" type="date" />
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="submit" class="btn">Add Story</button>
+          <button type="button" id="bulkDeleteStories" class="btn danger">Delete All Stories</button>
+          <span class="helper">Stories will appear on the homepage under "Stories of Impact".</span>
+        </div>
+      </form>
+
+      <h3 style="margin-top:18px;">Existing Stories (<span id="storyCount">0</span>)</h3>
+      <div id="storyList" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Edit modals (gallery & story) -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal" role="dialog" aria-modal="true" id="editModal">
+      <header>
+        <h3 id="modalTitle">Edit</h3>
+        <button class="close-x" id="closeModal">&times;</button>
+      </header>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding:14px; color:#666;">© Carevia Foundation</footer>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

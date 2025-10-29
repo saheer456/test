@@ -1,0 +1,1286 @@
+/*
+==================================================
+    Carevia Foundation Stylesheet
+==================================================
+
+    TABLE OF CONTENTS
+    ---------------------------------------------
+    1. GLOBALS & VARIABLES
+        - CSS Variables (Colors)
+        - Global Reset
+        - Body & Container
+    
+    2. HEADER & NAVIGATION
+        - Site Header (Fixed)
+        - Brand Logo
+        - Mobile Navigation (Toggle & Menu)
+
+    3. HERO SECTION
+        - Hero Background & Content
+        - CTA Buttons
+
+    4. GENERAL SECTION STYLING
+        - Section Padding
+        - Section Headers
+
+    5. ABOUT US SECTION
+        - .about-full (Top text)
+        - .about-row (Journey/Belief + Image)
+        - .what-we-do (Wrapper)
+
+    6. SERVICES (Inside About)
+        - .services-grid
+        - .service-card
+
+    7. TESTIMONIALS & GALLERY
+        - .testimonials-grid
+        - .testimonial-card
+        - .gallery-section
+        - .gallery-grid
+
+    8. DONATE SECTION
+        - .donation-grid
+        - .donation-card
+        - .bank-details
+        - .qr-code
+
+    9. FORMS (Donate & Contact)
+        - .form-group
+        - .btn
+
+    10. CONTACT SECTION
+        - .contact-grid
+        - .contact-info
+        - .contact-form
+
+    11. FOOTER
+        - .site-footer
+        - .footer-grid
+        - .copyright
+
+    12. ADMIN & LOGIN STYLES
+        - .admin-panel (Generic)
+        - .login-link
+        - .hidden-admin
+
+    13. UTILITY & ACCESSIBILITY
+        - Utility Classes
+        - Accessibility (Focus, Motion)
+
+    14. RESPONSIVE STYLES (TABLET)
+        - @media (min-width: 481px) and (max-width: 768px)
+
+    15. RESPONSIVE STYLES (DESKTOP)
+        - @media (min-width: 769px)
+
+    16. RESPONSIVE STYLES (SMALL MOBILE)
+        - @media (max-width: 600px)
+
+==================================================
+*/
+
+/* ==================================================
+    1. GLOBALS & VARIABLES
+==================================================
+*/
+
+:root {
+    --primary-color: #8Fc9FF;
+    --primary-dark: #6ba7e6;
+    --primary-darker: #4a85cc;
+    --text-on-primary: #333333;
+    --accent-color: #fae588;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ==================================================
+    2. HEADER & NAVIGATION
+==================================================
+*/
+
+.site-header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+}
+
+.nav-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-darker);
+    text-decoration: none;
+}
+
+.brand img {
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+}
+
+/* Mobile Navigation */
+.nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+    color: var(--primary-darker);
+}
+
+.site-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.site-nav.active {
+    display: flex;
+}
+
+.site-nav a {
+    padding: 15px 0;
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+}
+
+.site-nav a.active {
+    color: var(--primary-darker);
+    font-weight: bold;
+}
+
+.admin-btn {
+    background: var(--primary-color);
+    color: var(--text-on-primary) !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.admin-btn:hover {
+    background: var(--primary-dark);
+    text-decoration: none;
+}
+
+/* Close button for mobile menu */
+.close-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+/* ==================================================
+    3. HERO SECTION
+==================================================
+*/
+
+.hero-section {
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-color) 100%);
+    text-align: center;
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle pattern overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.05)"><circle cx="50" cy="50" r="2"/></svg>');
+    background-size: 50px 50px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    line-height: 1.2;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #f0f8ff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+.hero-text {
+    font-size: 1rem;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    color: #f0f8ff;
+    opacity: 0.95;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #fff;
+    color: var(--primary-darker);
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ==================================================
+    4. GENERAL SECTION STYLING
+==================================================
+*/
+
+section {
+    padding: 80px 0;
+    min-height: auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--primary-darker);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 100%;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* ==================================================
+    5. ABOUT US SECTION
+==================================================
+*/
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    padding: 50px 0;
+}
+
+/* Full-width About Text (Top part) */
+.about-full {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.about-full h2 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #2c5530;
+}
+
+.about-full p {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-size: 1.1em;
+    color: #333;
+    text-align: center;
+}
+
+/* About Row: Image + Text */
+.about-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Image */
+.about-image {
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Text (Journey & Belief) */
+.about-content {
+    flex: 1;
+    min-width: 280px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-content li {
+    margin-bottom: 30px;
+    border-left: 4px solid #4a7c59; /* Desktop: left border */
+    padding-left: 20px;
+}
+
+.about-content li:last-child {
+    margin-bottom: 0;
+}
+
+.about-content h3 {
+    color: #4a7c59;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.about-content p {
+    line-height: 1.7;
+    font-size: 1.05em;
+    color: #333;
+    margin: 0;
+}
+
+/* ===== WHAT WE DO SECTION ===== */
+.what-we-do {
+    margin-top: 50px;
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.what-we-do h3 {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    color: #2c5530;
+}
+
+/* Grid for services or activities */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.service-item h4 {
+    color: #2c5530;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.service-item p {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 900px) {
+    .about-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-content li {
+        border-left: none;
+        border-top: 3px solid #4a7c59; /* Mobile: top border */
+        padding-left: 0;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-full h2 {
+        font-size: 2em;
+    }
+
+    .about-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .what-we-do h3 {
+        font-size: 1.5em;
+    }
+}
+
+/* ==================================================
+    6. SERVICES (Inside About)
+==================================================
+*/
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 column */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styles merged from .service-card and .service-item */
+.service-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    border-top: 4px solid var(--primary-color);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(143, 201, 255, 0.2);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-darker);
+}
+
+.service-card h4 {
+  color: #2c5530;
+  margin-bottom: 18px;
+  font-size: 1.3em;
+}
+
+.service-card p {
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* ==================================================
+    7. TESTIMONIALS & GALLERY
+==================================================
+*/
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary-color);
+}
+
+.testimonial-content p { /* Adjusted selector */
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.testimonial-author {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.testimonial-author strong {
+    display: block;
+    color: var(--primary-darker);
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-author span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Gallery Section */
+.gallery-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.gallery-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--primary-darker);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(143, 201, 255, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* ==================================================
+    8. DONATE SECTION
+==================================================
+*/
+
+.donation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.donation-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.bank-details {
+    border-left: 5px solid var(--primary-color);
+}
+
+.bank-info p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.bank-info strong {
+    color: var(--primary-darker);
+}
+
+/* This is the consolidated, functional .qr-code style */
+.qr-code {
+    text-align: center;
+    margin: 20px 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+}
+
+.qr-code img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Styles for the donation form (which is also a .donation-card) */
+.donation-form h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-darker);
+}
+
+/* ==================================================
+    9. FORMS (Donate & Contact)
+==================================================
+*/
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-height: 44px; /* For touch targets */
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+    width: 100%;
+    min-height: 44px; /* For touch targets */
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ==================================================
+    10. CONTACT SECTION
+==================================================
+*/
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.contact-info h3 {
+    color: var(--primary-darker);
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+}
+
+.contact-item {
+    margin-bottom: 1.25rem;
+}
+
+.contact-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+.contact-item a {
+    color: var(--primary-darker);
+    word-break: break-all;
+}
+
+.phone-numbers p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.social-connect {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.social-link {
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    text-decoration: none;
+    color: var(--text-on-primary);
+}
+
+.contact-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.contact-form h3 {
+    color: var(--primary-darker);
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+}
+
+
+/* ==================================================
+    11. FOOTER
+==================================================
+*/
+
+.site-footer {
+    background: var(--primary-darker);
+    color: white;
+    padding: 2rem 0 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section {
+    position: relative; /* For .hidden-admin */
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-section p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+}
+
+/* ==================================================
+    12. ADMIN & LOGIN STYLES
+==================================================
+*/
+
+/* Generic styles for an admin panel (if one exists) */
+.admin-panel {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 100px 0 2rem;
+}
+
+.admin-header {
+    background: var(--primary-darker);
+    color: white;
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-nav button {
+    padding: 12px 20px;
+    border: none;
+    background: #e9ecef;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.admin-nav button.active {
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    font-weight: bold;
+}
+
+.admin-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+/* Login Link */
+.login-link {
+    background: transparent !important;
+    color: #666 !important;
+    border: 1px solid #ddd !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    margin-left: 1rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+    opacity: 0.7 !important;
+}
+
+.login-link:hover {
+    background: var(--primary-color) !important;
+    color: var(--text-on-primary) !important;
+    border-color: var(--primary-color) !important;
+    opacity: 1 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Mobile styles for login link */
+@media (max-width: 768px) {
+    .login-link {
+        margin: 10px 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        border: 1px solid #eee !important;
+        padding: 12px !important;
+    }
+}
+
+/* Hidden Admin Link in Footer */
+.hidden-admin {
+    width: 35px;              
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 999;
+    border-radius: 50%;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.hidden-admin:hover,
+.hidden-admin:active {
+    opacity: 0.2;
+    transform: scale(1.1);
+    background: #fff;
+}
+
+/* ==================================================
+    13. UTILITY & ACCESSIBILITY
+==================================================
+*/
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.bg-primary { background-color: var(--primary-color) !important; }
+.text-primary { color: var(--primary-darker) !important; }
+.border-primary { border-color: var(--primary-color) !important; }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .cta-button,
+    .service-card,
+    .testimonial-card,
+    .gallery-grid img {
+        transition: none;
+    }
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0066cc;
+        --primary-dark: #004499;
+        --primary-darker: #002266;
+    }
+}
+
+/* ==================================================
+    14. RESPONSIVE STYLES (TABLET)
+==================================================
+*/
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .social-links {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* ==================================================
+    15. RESPONSIVE STYLES (DESKTOP)
+==================================================
+*/
+@media (min-width: 769px) {
+    
+    /* ----- Navigation Desktop ----- */
+    .nav-toggle {
+        display: none;
+    }
+
+    .site-nav {
+        display: flex;
+        position: static;
+        height: auto;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        overflow-y: visible;
+    }
+
+    .site-nav a {
+        padding: 0;
+        border-bottom: none;
+        margin-left: 1.5rem;
+        width: auto;
+        transition: color 0.3s;
+    }
+
+    .site-nav a:hover {
+        color: var(--primary-darker);
+    }
+
+    .admin-btn {
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+
+    /* ----- Hero Desktop ----- */
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+
+    .hero-text {
+        font-size: 1.2rem;
+        max-width: 800px;
+    }
+
+    .hero-buttons {
+        display: flex; /* Added for proper layout */
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .cta-button {
+        width: auto;
+        min-width: 200px;
+    }
+
+    /* ----- Sections Desktop ----- */
+    section {
+        padding: 100px 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Make Hero and Footer exceptions to min-height */
+    .hero-section, .site-footer {
+        min-height: auto;
+    }
+    .hero-section {
+        min-height: 100vh; /* Restore hero min-height */
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-header p {
+        font-size: 1.2rem;
+        max-width: 600px;
+    }
+
+    /* ----- About Desktop ----- */
+    .about-section {
+      padding: 80px 0;
+    }
+
+    .about-full {
+      margin-bottom: 80px;
+      padding: 0 40px;
+    }
+    
+    .about-row {
+      flex-direction: row; /* Desktop: side-by-side */
+      gap: 80px;
+      padding: 0 40px;
+    }
+    
+    .about-image {
+      min-width: 300px;
+      max-width: 500px;
+    }
+    .about-image img {
+        max-width: 450px;
+    }
+
+    .about-content {
+      min-width: 300px;
+      max-width: 600px;
+    }
+    
+    .about-content li {
+      margin-bottom: 40px;
+      /* Desktop: Border on left */
+      border-left: 4px solid #f2f5f3;
+      border-top: none;
+      padding: 5px 0 5px 25px;
+    }
+    
+    .what-we-do {
+      margin-top: 80px;
+      padding: 70px 40px;
+    }
+
+    /* ----- Services Desktop ----- */
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 35px;
+    }
+
+    /* ----- Testimonials Desktop ----- */
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    /* ----- Gallery Desktop ----- */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    /* ----- Donation Desktop ----- */
+    .donation-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    /* ----- Contact Desktop ----- */
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .social-links {
+        grid-template-columns: 1fr; /* Stack social links */
+    }
+
+    /* ----- Footer Desktop ----- */
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    /* ----- Admin Desktop ----- */
+    .admin-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* ==================================================
+    16. RESPONSIVE STYLES (SMALL MOBILE)
+==================================================
+*/
+@media (max-width: 600px) {
+    /* Fine-tune gallery for very small screens */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .gallery-grid img {
+        height: 150px;
+    }
+}
+
+/* ===== END OF FILE ===== */

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Carevia Foundation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-color) 100%);
+            padding: 20px;
+        }
+        
+        .login-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            color: var(--primary-darker);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .login-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .back-home {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .back-home a {
+            color: var(--primary-darker);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-home a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-logo img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-logo h1 {
+            font-size: 1.2rem;
+            color: var(--primary-darker);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="login-logo">
+                <img src="assets/images/logo.png" alt="Carevia Foundation">
+                <h1>Carevia Foundation</h1>
+            </div>
+            
+            <h2>Admin Login</h2>
+            <p class="login-subtitle">Access the administration panel</p>
+            
+            <form id="loginForm">
+    <!-- Username Input -->
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            placeholder="Enter your username" 
+            required
+            style="width: 100%; padding: 12px; border: 2px solid #e1e5e9; border-radius: 8px; font-size: 1rem;"
+        >
+    </div>
+
+    <!-- Password Input -->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="Enter your password" 
+            required
+            style="width: 100%; padding: 12px; border: 2px solid #e1e5e9; border-radius: 8px; font-size: 1rem;"
+        >
+    </div>
+
+    <!-- Submit Button -->
+    <button 
+        type="submit" 
+        class="btn btn-block" 
+        style="margin-top: 1rem; padding: 12px; font-size: 1rem; border-radius: 8px; background-color: var(--primary-color); color: #fff; border: none; cursor: pointer;"
+    >
+        🔐 Login to Admin Panel
+    </button>
+
+    <!-- Back to Homepage -->
+    <div class="back-home" style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #eee;">
+        <a href="index.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500; transition: color 0.3s;">
+            ← Back to Homepage
+        </a>
+    </div>
+</form>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
