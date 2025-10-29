@@ -233,9 +233,8 @@ body {
 */
 
 .hero-section {
-    background: var(--primary-color);
+    background: #87CEFA; /* Sky blue */
     color: var(--text-on-primary);
-    background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-color) 100%);
     text-align: center;
     padding: 120px 0 80px;
     min-height: 100vh;
@@ -244,6 +243,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
 
 /* Add subtle pattern overlay */
 .hero-section::before {

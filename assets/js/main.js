@@ -59,6 +59,30 @@ function initNavigation() {
         link.classList.add("active");
     });
   });
+    // ✅ Close menu when clicking nav links (mobile friendly)
+  const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+  navLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute("href"));
+
+      // Close menu
+      siteNav.classList.remove("active");
+      document.body.style.overflow = "";
+
+      // Smooth scroll
+      setTimeout(() => {
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }, 150);
+    });
+  });
+
 }
 
 // ==========================================================
