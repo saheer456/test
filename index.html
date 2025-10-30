@@ -14,36 +14,31 @@
 </head>
 <body>
     <!-- ===== HEADER & NAVIGATION ===== -->
-    <header class="site-header">
-        <div class="container">
-            <nav class="nav-wrap">
-                <!-- Logo/Brand -->
-                <a href="#" class="brand">
-                    <img src="assets/images/logo.png" alt="Carevia Foundation Logo">
-                    Carevia Foundation
-                </a>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="nav-toggle" aria-label="Toggle navigation menu">
-                    ☰
-                </button>
-                
-                <!-- Main Navigation -->
-                <div class="site-nav">
-                    <!-- Close Button for Mobile -->
-                    <button class="close-menu" aria-label="Close navigation menu">×</button>
-                    
-                    <!-- Navigation Links -->
-                    <a href="#home" class="active">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#programs">Programs</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#donate">Donate</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+  <header class="site-header">
+    <div class="container nav-wrap">
+        <a href="#home" class="brand">
+            <img src="images/logo.png" alt="logo">
+            Carevia Foundation
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+
+        <!-- Navigation Menu -->
+        <nav class="site-nav" id="mobileMenu">
+
+            <button class="close-menu" id="closeMenu">&times;</button>
+
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#whatwedo" class="nav-link">What We Do</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#donate" class="nav-link">Donate</a>
+            <a href="#contact" class="nav-link">Contact Us</a>
+        </nav>
+    </div>
+</header>
 
     <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero-section">
@@ -157,52 +152,29 @@ Now and Beyond – Expanding programs in women’s empowerment, education, and h
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS SECTION ===== -->
+    <!-- ===== TESTIMONIALS / STORIES ===== -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <!-- Section Header -->
-            <div class="section-header">
-                <h2>Stories of Impact</h2>
-                <p>Hear from those whose lives have been transformed through our programs</p>
-            </div>
-            
-            <!-- Testimonials Grid -->
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "A widow, Mrs. J Shaikh  (name changed for security reasons), who is a mother of three  girls, was recently admitted to aadhar Hospital, Dehu Road, for a medical operation.
+            <h2>Stories of Impact</h2>
+            <p>Hear from those whose lives have been transformed through our programs</p>
 
-Due to her difficult financial situation, she was unable to pay the full hospital bill after the surgery.
+            <!-- ✅ Supabase will add cards dynamically -->
+            <div class="testimonials-grid"></div>
+        </div>
+    </section>
 
-Upon learning about her case through one of our dedicated volunteers, Carevia Foundation immediately stepped in to help.
+    <!-- ===== GALLERY / IMPACT ===== -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2>Our Work in Action</h2>
+            <p>Snapshots from our ground-level work, events, and outreach activities.</p>
 
-The Foundation contributed ₹3,000 to clear the remaining hospital dues, ensuring that the patient could be discharged smoothly and return home.
-
-This timely support brought great relief to Mrs. J Shaikh  and her family, reflecting Carevia Foundation’s ongoing commitment to assisting those in urgent medical and financial need.
-"
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Feroz Nadaf</strong>
-                        <span>Support for a Needy Patient</span>
-                    </div>
-                </div>
-                
-               
-                    </div>
-                </div>
+            <!-- ✅ Supabase images appear here -->
+            <div class="gallery-grid" id="galleryGrid">
+                <p style="text-align:center;">Loading gallery...</p>
             </div>
         </div>
     </section>
-  <!-- ===== GALLERY SECTION ===== -->
-<section id="gallery" class="gallery-section">
-    <div class="container">
-        
-        <!-- Section Header -->
-        <div class="section-header">
-            <h2>Our Work in Action</h2>
-            <p>Here are some moments from our projects and volunteering activities.</p>
-        </div>
 
         <!-- Gallery Grid -->
         <div class="gallery-grid">
@@ -210,14 +182,12 @@ This timely support brought great relief to Mrs. J Shaikh  and her family, refle
                 <img src="assets/images/img 1.jpg" alt="Project Image 1">
             </div>
             <div class="gallery-item">
-                <img src="assets/images/work2.jpg" alt="Project Image 2">
+                <img src="assets/images/img 2.jpg" alt="Project Image 2">
             </div>
             <div class="gallery-item">
-                <img src="assets/images/work3.jpg" alt="Project Image 3">
+                <img src="assets/images/img3.jpg" alt="Project Image 3">
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/work4.jpg" alt="Project Image 4">
-            </div>
+            
         </div>
 
     </div>
@@ -308,10 +278,11 @@ This timely support brought great relief to Mrs. J Shaikh  and her family, refle
                     </div>
                 </div>
                 
-         <!-- Contact Form -->
+       <!-- Contact Form -->
 <div class="contact-form">
   <h3>Send us a Message</h3>
   <form id="contactForm">
+    
     <!-- Name Input -->
     <div class="form-group">
       <label for="name">Full Name</label>
@@ -322,6 +293,13 @@ This timely support brought great relief to Mrs. J Shaikh  and her family, refle
     <div class="form-group">
       <label for="email">Email Address</label>
       <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+
+    <!-- ✅ Phone Number Input -->
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter phone number" required pattern="[0-9]{10}" maxlength="10">
+      <small style="font-size:12px;color:#666;">10-digit mobile number</small>
     </div>
 
     <!-- Subject Dropdown -->
@@ -349,46 +327,42 @@ This timely support brought great relief to Mrs. J Shaikh  and her family, refle
 </div>
 
 <!-- WhatsApp Script -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const contactForm = document.getElementById("contactForm");
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+<script type="module">
+import { supabase } from "./assets/js/supabase.js";
 
-      // Collect form data
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
 
-      if (!name || !email || !subject || !message) {
-        alert("⚠️ Please fill in all fields before sending!");
-        return;
-      }
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      // Replace this with your WhatsApp number (include country code)
-      const adminNumber = "919545503065";
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-      // Compose WhatsApp message
-      const waMessage = `📩 *New Contact Message from Carevia Website* 
--------------------------
-👤 Name: ${name}
-📧 Email: ${email}
-📝 Subject: ${subject}
-💬 Message:
-${message}
--------------------------
-Sent via Carevia Foundation Website`;
+    if (!name || !email || !subject || !message) {
+      alert("⚠️ Please fill in all fields");
+      return;
+    }
 
-      // Open WhatsApp chat with message
-      const waUrl = `https://wa.me/${adminNumber}?text=${encodeURIComponent(waMessage)}`;
-      window.open(waUrl, "_blank");
+    // ✅ INSERT INTO SUPABASE
+    const { data, error } = await supabase
+      .from("contacts")
+      .insert([{ name, email, subject, message }]);
 
-      // Reset form
-      contactForm.reset();
-    });
+    if (error) {
+      alert("❌ Failed to send message. Try again.");
+      console.log(error);
+      return;
+    }
+
+    alert("✅ Message submitted successfully!");
+    contactForm.reset();
   });
+});
 </script>
+
             </div>
         </div>
     </section>
@@ -485,9 +459,31 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
-    
-    <!-- ===== JAVASCRIPT ===== -->
-<script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 
+<script>
+const navToggle = document.getElementById("navToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const closeMenu = document.getElementById("closeMenu");
+
+// Open menu
+navToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+});
+
+// Close when X clicked
+closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+});
+
+// Close after clicking any nav item
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+    });
+});
+</script>
+</div>
 </body>
 </html>
