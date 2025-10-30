@@ -17,23 +17,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // ✅ MOBILE NAVIGATION
 // ==========================================================
 function initNavigation() {
-    const navToggle = document.querySelector(".nav-toggle");
-    const navMenu = document.querySelector(".site-nav");
+  const navToggle = document.querySelector(".nav-toggle");
+  const siteNav = document.querySelector(".site-nav");
 
-    if (!navToggle || !navMenu) return;
+  if (!navToggle || !siteNav) return;
 
-    // ✅ Open Menu
-    navToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
+  // ✅ Toggle open/close
+  navToggle.addEventListener("click", () => {
+    siteNav.classList.toggle("active");
+  });
+
+  // ✅ Close when clicking a menu link
+  const navLinks = document.querySelectorAll('.site-nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      siteNav.classList.remove("active");
     });
-
-    // ✅ Close menu when clicking a link
-    document.querySelectorAll(".site-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-        });
-    });
+  });
 }
+
 
 // ==========================================================
 // ✅ CONTACT FORM → SUPABASE

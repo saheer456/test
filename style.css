@@ -227,6 +227,64 @@ body {
     cursor: pointer;
     color: #666;
 }
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+/* Hamburger */
+.nav-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Desktop nav */
+.site-nav {
+    display: flex;
+    gap: 22px;
+}
+
+/* Mobile nav hidden */
+@media(max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .site-nav {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 75%;
+        height: 100vh;
+        background: white;
+        padding: 20px;
+        border-left: 1px solid #eee;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* When active show the menu */
+    .site-nav.active {
+        display: flex;
+    }
+
+    .site-nav a {
+        padding: 14px 0;
+        font-size: 18px;
+    }
+}
 
 /* ==================================================
     3. HERO SECTION
