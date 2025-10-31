@@ -401,39 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="#">Terms of Service</a>
                         <a href="#">Financial Reports</a>
                         <a href="#">Transparency</a>
+                        <a href="#admin-access">Admin Access</a>
                     </nav>
-                    
-                    <!-- Hidden Admin Access Area -->
-                    <!-- Hidden Admin Button -->
-<div class="admin-access-btn" title="Admin Access" 
-     style="display: inline-block; padding: 10px 20px; background-color: var(--primary-color); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; text-align: center; transition: background 0.3s;">
-    🔐 Admin Login
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const hiddenAdmin = document.querySelector('.admin-access-btn');
 
-    if (hiddenAdmin) {
-        hiddenAdmin.addEventListener('click', () => {
-            window.location.href = 'login.html';
-        });
-    }
-
-    // Optional: Secret keyboard code (carevia123)
-    let secretCode = '';
-    const adminCode = 'carevia123';
-    document.addEventListener('keydown', function(e) {
-        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-            secretCode += e.key.toLowerCase();
-            if (secretCode.length > adminCode.length) secretCode = secretCode.substring(1);
-            if (secretCode === adminCode) {
-                window.location.href = 'login.html';
-                secretCode = '';
-            }
-        }
-    });
-});
-</script>
 
                 </div>
             </div>
