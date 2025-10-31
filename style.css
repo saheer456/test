@@ -118,12 +118,9 @@ body {
     margin: 0 auto;
     padding: 0 15px;
 }
-
 /* ==================================================
-    2. HEADER & NAVIGATION
-==================================================
-*/
-
+    HEADER & NAVIGATION
+================================================== */
 .site-header {
     background: #fff;
     position: fixed;
@@ -138,7 +135,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
 }
 
 .brand {
@@ -156,19 +152,18 @@ body {
     margin-right: 8px;
 }
 
-/* ✅ MOBILE NAVIGATION (FIXED & CLEAN) */
+/* ✅ MOBILE HAMBURGER */
 .nav-toggle {
     display: block;
     background: none;
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    padding: 5px;
     z-index: 1001;
     color: var(--primary-darker);
 }
 
-/* ✅ Hidden by default – slides from right */
+/* ✅ MOBILE MENU (hidden by slide) */
 .site-nav {
     position: fixed;
     top: 0;
@@ -185,12 +180,11 @@ body {
     transition: right 0.3s ease;
 }
 
-/* ✅ Show when active */
+/* ✅ SHOW MENU */
 .site-nav.active {
     right: 0;
 }
 
-/* Links */
 .site-nav a {
     padding: 14px 0;
     border-bottom: 1px solid #f0f0f0;
@@ -200,40 +194,31 @@ body {
     width: 100%;
 }
 
-.site-nav a.active {
-    color: var(--primary-darker);
-    font-weight: bold;
+/* ✅ CLOSE BUTTON */
+.close-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #444;
 }
 
-/* Admin button */
-.admin-btn {
-    background: var(--primary-color);
-    color: var(--text-on-primary) !important;
-    padding: 12px 20px;
-    border-radius: 8px;
-    margin-top: 15px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.admin-btn:hover {
-    background: var(--primary-dark);
-}
-
-/* ✅ Desktop override */
-@media(min-width: 769px) {
+/* ✅ DESKTOP NAV (remove slide, show inline) */
+@media (min-width: 769px) {
     .nav-toggle {
         display: none;
     }
 
     .site-nav {
         position: static;
-        height: auto;
         width: auto;
-        background: transparent;
-        display: flex;
-        flex-direction: row;
+        height: auto;
         padding: 0;
+        background: transparent;
+        flex-direction: row;
         box-shadow: none;
         right: auto;
         transition: none;
@@ -245,81 +230,11 @@ body {
         padding: 0;
     }
 
-    .admin-btn {
-        margin-left: 1rem;
-        margin-top: 0;
-    }
-}
-
-/* Close button for mobile menu */
-.close-menu {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
-}
-/* ===== NAVBAR ===== */
-.navbar {
-    width: 100%;
-    padding: 12px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-}
-
-/* Hamburger */
-.nav-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* Desktop nav */
-.site-nav {
-    display: flex;
-    gap: 22px;
-}
-
-/* Mobile nav hidden */
-@media(max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-
-    .site-nav {
+    .close-menu {
         display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 75%;
-        height: 100vh;
-        background: white;
-        padding: 20px;
-        border-left: 1px solid #eee;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    }
-
-    /* When active show the menu */
-    .site-nav.active {
-        display: flex;
-    }
-
-    .site-nav a {
-        padding: 14px 0;
-        font-size: 18px;
     }
 }
+
 
 /* ==================================================
     3. HERO SECTION
