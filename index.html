@@ -450,37 +450,36 @@ document.addEventListener('DOMContentLoaded', () => {
     <script type="module" src="assets/js/supabase.js"></script>
     <script type="module" src="assets/js/main.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const navToggle = document.querySelector(".nav-toggle");
-    const siteNav = document.querySelector(".site-nav");
-    const closeMenu = document.querySelector(".close-menu");
-
-    if (!navToggle || !siteNav) return;
-
-    // ✅ Open menu
-    navToggle.addEventListener("click", () => {
-        siteNav.classList.add("active");
-        document.body.style.overflow = "hidden"; // disable scroll behind menu
+// TEMPORARY DEBUG SCRIPT
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+    const closeMenu = document.querySelector('.close-menu');
+    
+    console.log('Elements found:', {
+        navToggle: navToggle,
+        siteNav: siteNav,
+        closeMenu: closeMenu
     });
-
-    // ✅ Close menu using X button
-    if (closeMenu) {
-        closeMenu.addEventListener("click", () => {
-            siteNav.classList.remove("active");
-            document.body.style.overflow = "";
+    
+    // Simple test - does clicking work?
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            console.log('Hamburger clicked!');
+            siteNav.classList.toggle('active');
         });
     }
-
-    // ✅ Close when clicking any nav link
-    document.querySelectorAll(".site-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-            siteNav.classList.remove("active");
-            document.body.style.overflow = "";
+    
+    if (closeMenu) {
+        closeMenu.addEventListener('click', function() {
+            console.log('Close button clicked!');
+            siteNav.classList.remove('active');
         });
-    });
+    }
 });
 </script>
-
 </div>
 </body>
 </html>

@@ -12,31 +12,47 @@ document.addEventListener("DOMContentLoaded", () => {
     loadGallery();
     loadTestimonials();
 });
-
-// ==========================================================
-// ✅ MOBILE NAVIGATION
+// ✅ MOBILE NAVIGATION - IMPROVED VERSION //
 // ==========================================================
 function initNavigation() {
-  const navToggle = document.querySelector(".nav-toggle");
-  const siteNav = document.querySelector(".site-nav");
+    const navToggle = document.querySelector(".nav-toggle");
+    const siteNav = document.querySelector(".site-nav");
+    const closeMenu = document.querySelector(".close-menu");
 
-  if (!navToggle || !siteNav) return;
+    if (!navToggle || !siteNav) return;
 
-  // ✅ Toggle open/close
-  navToggle.addEventListener("click", () => {
-    siteNav.classList.toggle("active");
-  });
-
-  // ✅ Close when clicking a menu link
-  const navLinks = document.querySelectorAll('.site-nav a');
-
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("active");
+    // ✅ Open menu
+    navToggle.addEventListener("click", () => {
+        siteNav.classList.add("active");
+        document.body.style.overflow = "hidden";
     });
-  });
-}
 
+    // ✅ Close menu using X button
+    if (closeMenu) {
+        closeMenu.addEventListener("click", () => {
+            siteNav.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+    }
+
+    // ✅ Close when clicking any nav link
+    document.querySelectorAll(".site-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+            siteNav.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+    });
+
+    // ✅ Close when clicking outside the menu (optional)
+    document.addEventListener("click", (e) => {
+        if (siteNav.classList.contains("active") && 
+            !siteNav.contains(e.target) && 
+            e.target !== navToggle) {
+            siteNav.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
+}
 
 // ==========================================================
 // ✅ CONTACT FORM → SUPABASE

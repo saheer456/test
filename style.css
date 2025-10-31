@@ -242,6 +242,15 @@ body {
     }
 }
 
+/* ✅ Ensure mobile menu is clickable when active */
+.site-nav.active {
+    pointer-events: auto;
+}
+
+.site-nav:not(.active) {
+    pointer-events: none;
+}
+
 
 /* ==================================================
     3. HERO SECTION
