@@ -246,9 +246,24 @@ body {
 .site-nav.active {
     pointer-events: auto;
 }
+@media (max-width: 768px) {
+    .site-nav:not(.active) {
+        pointer-events: none;
+    }
+}
 
-.site-nav:not(.active) {
-    pointer-events: none;
+/* Ensure desktop nav is always clickable */
+
+@media (min-width: 769px) {
+    .site-nav {
+        pointer-events: auto !important;
+        z-index: 9999 !important;
+        position: relative;
+    }
+
+    .site-header {
+        z-index: 10000 !important;
+    }
 }
 
 
