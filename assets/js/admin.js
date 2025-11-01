@@ -91,7 +91,8 @@ document.getElementById("galleryForm")?.addEventListener("submit", async (e) => 
         return;
     }
 
-    const image_url = `https://yvsetmamsmpxhzpswfme.supabase.co/storage/v1/object/public/gallery/${fileName}`;
+    const image_url = `https://fzhvotasyrbxyfmkqkfa.supabase.co/storage/v1/object/public/gallery/${fileName}`;
+
 
     const { error } = await supabase.from("gallery").insert([{ title, category, image_url }]);
 
@@ -172,7 +173,7 @@ document.getElementById("storyForm")?.addEventListener("submit", async (e) => {
         const fileName = `story-${Date.now()}-${file.name}`;
         const { error: uploadError } = await supabase.storage.from("stories").upload(fileName, file);
         if (!uploadError) {
-            image_url = `https://yvsetmamsmpxhzpswfme.supabase.co/storage/v1/object/public/stories/${fileName}`;
+           image_url = `https://fzhvotasyrbxyfmkqkfa.supabase.co/storage/v1/object/public/stories/${fileName}`;
         }
     }
 
